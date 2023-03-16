@@ -30,3 +30,28 @@ Projeto do sistema desenvolvido
     9) gerar as migrações
         - python projeto/manage.py makemigrations -> gera os scritps do sql escolhido
         - python projeto/manage.py migrate        -> roda os scripts gerados e cria a tabela
+
+## Criando primeiro usuário de acesso
+
+No shell do Django (com venv ativa)
+
+python projeto\manage.py shell
+
+#importando a classe Usuario
+from usuario.models import Usuario
+
+#criando um objeto do tipo Usuario
+u = Usuario
+u.tipo = 'ADMINSTRADOR'
+u.nome = 'Gustavo Barros'
+u.apelido = 'Gugu'
+u.celular = '99998765'
+u.is_active = True
+u.email = 'gbarros@ufn.edu.br'
+
+#persistir no banco
+u.save()
+
+#definir senha com criptografia
+u.set_password('gbarros@ufn.edu.br')
+u.save()
