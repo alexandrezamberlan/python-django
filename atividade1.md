@@ -2,7 +2,7 @@
   - https://github.com/alexandrezamberlan/sistemaPythonDjangoTriagemCovid19.git
 
 ## Funcionalidades ou novos apps (Python-Django, um app é subsistema com CRUD)
-  - app Medicamento
+  - app Medicamento: nome_real, nome_fantasia, tarja (livre, amarela, vermelha, preta), tipo (cápsula, comprido, líquido), quantidade
     - models
     - views
     - template
