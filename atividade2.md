@@ -1,0 +1,22 @@
+# Longevos
+    - apps
+        - usuario
+            - tipo(administrador, coach, atleta)
+            - nome
+            - email
+            - posicao (direita, esquerda, ambas)
+            - data_nascimento
+            - apelido
+            - pontuacao ???
+        - etapa
+            - data ou período
+            - local
+            - total_duplas
+            - primeiro_lugar ??
+            - segundo_lugar ??
+            - total_direitas
+            - total_esquerdas
+        - etapa_usuarios ??
+            - idEtapa
+            - idUsuario
+            - posicao_final
