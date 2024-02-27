@@ -7,7 +7,7 @@ Cloud Computing - Compartilhamento de recursos
             - Monolítica: 
                 - Desenvolvimento Python-Django-Bootstrap
                     - Python: linguagem OO
-                    - Django: framework com MOR
+                    - Django: framework com MOR (Mapeamento Objeto Relacional)
                                 - com recursos úteis para reuso
                     - Bootstrap: framework html e css
 
