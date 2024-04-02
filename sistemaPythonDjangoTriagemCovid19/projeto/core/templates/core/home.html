@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}
+      <img src="{% static 'core/img/logoUFN_hor.jpg' %}"
+      class="img-responsive" style="max-width: 120px;">
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+      <center>
+            <h2>Triagem Covid 19</h2>
+            <h3>Laboratório de Práticas da Computação UFN</h3>
+	</center>
+{% endif %}
+
+{% endblock %}

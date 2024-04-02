@@ -1,0 +1,15 @@
+- (FEITO) permissões de acesso
+- (FEITO) quando logar como usuário, na lista de empréstimos, exibir somente os objetos emprestados ao usuário logado
+- (FEITO) nos list trocar container por container-fluid (base.html em templates do core)
+
+- quando emprestar um objeto, ao abrir a lista de objetos, somente mostrar os cadastrados, ativos e que não estão em empréstimo
+- refatorar o app objeto e colocar um atributo (booleano) que avise/indique (listview) que o objeto está ou não emprestado
+
+- na views.py nas classes XXXListView, XXXCreateView e XXXUpdateView -> template_name
+- colocar um datepicker na data de empréstimo do objeto ou captura automática
+
+- nos botões existentes colocar tooltips (colocar no html no template e habilitar um javascript no bootstrap.html em core)
+
+
+- falar do processo de instalação e configuração do servidor
+- manipular usuários via shell django

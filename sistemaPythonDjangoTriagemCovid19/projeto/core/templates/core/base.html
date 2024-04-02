@@ -1,0 +1,31 @@
+{% extends 'core/bootstrap.html' %}
+{% load static %}
+
+{% load bootstrap3 %}
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block bootstrap3_title %}Sistema Triagem Covid 19</title>
+        
+        <link rel = "icon" href =  
+        "https://www.ufn.edu.br/site/favicon.ico" 
+        type = "image/x-icon">
+    {% endblock %}
+</head>
+
+{% block bootstrap3_content %}
+	{% include 'core/includes/_menu_principal.html' %}
+    <div class="container-fluid">
+        <h1>{% block title %}(no title){% endblock %}</h1>
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    {% include 'core/includes/_barra_status.html' %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block bootstrap3_content %}
+    <br>
+  <div class="container">
+    <div class="row panel panel-default panel-body">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+            <h1>SEOP</h1>
+            
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+            <br>
+            <h2>Seja bem-vindo(a)</h2>
+            <span class="label label-default">Desenvolvido pelos alunos de Sistemas de Informação</span>
+        </div>
+    </div>
+    <div class="row panel panel-default panel-body">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>{% block title %}(no title){% endblock %}</h2>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block bootstrap3_extra_script %}
+<script type="text/javascript" src="{% static 'core/js/login.js'%}" charset="UTF-8"></script>
+{% endblock %}

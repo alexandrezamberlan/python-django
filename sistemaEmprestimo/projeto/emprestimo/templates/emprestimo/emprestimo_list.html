@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'export' %} Empréstimos já realizados
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <a href="{% url 'emprestimo_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Cadastrar Empréstimo de objetos</a>
+	  </div>
+	</div>
+	<table class="table table-hover">
+  		<thead>
+			<th>Locador</th>
+			<th>Objeto(s)</th>
+			<th>Data de empréstimo</th>
+			<th>Em empréstimo?</th>
+  			<th class="text-center">Editar</th>
+  			<th class="text-center">Excluir</th>
+  		</thead>
+
+  		<tbody>
+  			{% for emprestimo in object_list %}
+				{% if user.tipo == 'ADMINISTRADOR' or user.nome == emprestimo.locador.nome %}				
+					<tr>
+						<td>{{ emprestimo.locador }}</td>
+						<td>
+							{% for c in emprestimo.objeto.all %}
+								{{ c.descricao }}
+								{% if forloop.last %}
+								.
+								{% else %}
+								,
+								{% endif %}
+							{% empty %}
+								<i>Nenhum objeto foi pego emprestado</i>
+							{% endfor %}
+						</td>
+						<td>{{ emprestimo.data_emprestimo|date:'d/m/Y' }}</td>
+						<td>
+							{% if emprestimo.em_emprestimo %}
+								Sim
+							{% else %}
+								Não
+							{% endif %}
+						</td>
+						<td class="text-center">
+							{% bootstrap_button content='' href=emprestimo.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+						</td>
+						<td class="text-center">
+							{% bootstrap_button content='' href=emprestimo.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+						</td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}

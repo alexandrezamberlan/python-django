@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+{% bootstrap_icon 'user' %} Atualiza Usuário
+{% endblock %}
+
+{% block content %}
+<form class="form" role="form" method="POST" name="producao_cientifica">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  {%comment%}
+  {% bootstrap_form form %}
+  {%endcomment%}
+
+  {% bootstrap_field form.tipo %}
+  {% bootstrap_field form.nome %}
+  {% bootstrap_field form.email %}
+  {% bootstrap_field form.cpf|add_class:'mask_cpf' %}
+  {% bootstrap_field form.rg %}
+  {% bootstrap_field form.matricula %}
+  
+  {% bootstrap_field form.is_active %}
+
+  
+  {% buttons submit='Gravar' %}
+  <a href="javascript:history.go(-1);" class="btn btn-info" role="button">Voltar</a>
+  {% endbuttons %}
+</form>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'home' %} Fornecedor
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <a href="{% url 'fornecedor_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Cadastrar Fornecedor</a>
+	  </div>
+	</div>
+	<table class="table table-hover">
+  		<thead>
+  			<th>Nome</th>
+			<th>CNPJ</th>
+			<th>Cidade</th>
+			<th>Tipo</th>
+			<th>Ativo</th>
+  			<th class="text-center">Editar</th>
+  			<th class="text-center">Excluir</th>
+  		</thead>
+
+  		<tbody>
+  			{% for fornecedor in object_list %}
+				<tr>
+					<td>{{ fornecedor.nome }}</td>
+					<td>{{ fornecedor.cnpj }}</td>
+					<td>{{ fornecedor.cidade }}</td>
+					<td>{{ fornecedor.tipo_fornecedor }}</td>
+					<td>
+						{% if fornecedor.is_active %}
+							{% bootstrap_icon 'thumbs-up' size='sm' %}
+						{% else %}
+							{% bootstrap_icon 'thumbs-down' size='sm' %}
+						{% endif %}
+					</td>
+					<td class="text-center">
+				          {% bootstrap_button content='' href=fornecedor.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+				    </td>
+				    <td class="text-center">
+				          {% bootstrap_button content='' href=fornecedor.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				    </td>
+				</tr>
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}

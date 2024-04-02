@@ -1,0 +1,18 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    {{ usuario.nome }}, bem-vindo(a) ao Sistema de Empréstimo de Objetos Pessoais. Valide o seu cadastro!
+{% endblock %}
+
+{% block html %}
+    <br>
+    <h2>SEOP</h2>
+    <p>{{ usuario.nome }}, antes de utilizar a plataforma, você precisa habilitar a sua conta.</p>
+    <p>Clique <a href='{{ usuario.get_usuario_register_activate_url }}'>aqui</a> para prosseguir.</a> </p>
+    <br>
+    <p>***** MENSAGEM GERADA AUTOMATICAMENTE. NÃO RESPONDA. *****</p>
+    <br>
+    <hr>
+    <p><small>Desenvolvido pelos alunos de Sistemas de Informação.</small></p>
+{% endblock %}

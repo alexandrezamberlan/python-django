@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'plus-sign' %} Medicamento
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+		<div class="panel-body">
+		<form class="form">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+					{% bootstrap_field form.tipo  %}
+				</div>	
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+					{% bootstrap_field form.tarja  %}
+				</div>			  				
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+					<br>
+					<button type="submit" class="btn btn-success btn-lg"  style="width: 100%;">{% bootstrap_icon 'search' %} Buscar</button>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+					<br>
+					<a href="{% url 'medicamento_create' %}" style="width: 100%;" class="btn btn-md btn-primary btn-lg">{% bootstrap_icon 'floppy-disk' %} Cadastrar Medicamento</a>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	
+	<table class="table table-hover">
+  		<thead>
+  			<th>Nome real</th>
+			<th>Nome fantasia</th>
+			<th>Fabricante</th>
+			<th>Tarja</th>
+			<th>Tipo</th>
+			<th>Quantidade</th>
+			<th>Ativo</th>
+  			<th class="text-center">Editar</th>
+  			<th class="text-center">Excluir</th>
+  		</thead>
+
+  		<tbody>
+  			{% for medicamento in object_list %}
+				<tr>
+					<td>{{ medicamento.nome_real }}</td>
+					<td>{{ medicamento.nome_fantasia }}</td>
+					<td>
+						{% if not medicamento.fornecedor %}
+							Não informado
+						{% else %}
+							{{ medicamento.fornecedor.nome }}
+						{% endif %}
+					</td>
+					<td>{{ medicamento.tarja }}</td>
+					<td>{{ medicamento.tipo }}</td>
+					<td>{{ medicamento.quantidade }}</td>
+					<td>
+						{% if medicamento.is_active %}
+							{% bootstrap_icon 'thumbs-up' size='sm' %}
+						{% else %}
+							{% bootstrap_icon 'thumbs-down' size='sm' %}
+						{% endif %}
+					</td>
+					<td class="text-center">
+				          {% bootstrap_button content='' href=medicamento.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+				    </td>
+				    <td class="text-center">
+				          {% bootstrap_button content='' href=medicamento.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				    </td>
+				</tr>
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}
