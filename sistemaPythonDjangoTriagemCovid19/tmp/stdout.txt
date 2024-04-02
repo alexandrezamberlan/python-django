@@ -1,8 +1,0 @@
- O volume na unidade C n∆o tem nome.
- O N£mero de SÇrie do Volume Ç 08DB-2197
-
- Pasta de C:\Users\laboratorio\Downloads\sistemaPythonDjangoTriagemCovid19\venv\Scripts
-
-11/05/2023  09:36           268.152 python.exe
-               1 arquivo(s)        268.152 bytes
-               0 pasta(s)   205.088.473.088 bytes dispon°veis
