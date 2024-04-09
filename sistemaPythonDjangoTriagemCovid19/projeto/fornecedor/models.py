@@ -23,6 +23,7 @@ class Fornecedor(models.Model):
     cnpj = models.CharField('CNPJ *', unique=True, max_length=15, help_text='* Campo obrigatório')
     cidade = models.CharField('Cidade *', max_length=100, help_text='* Campo obrigatório')   
     tipo_fornecedor = models.CharField('Tipo de fornecedor *', max_length=10, choices=FORNECEDOR_TIPO, help_text='* Campo obrigatório')
+    arquivo_medicamentos = models.FileField('Relação medicamentos', null=True, blank=True, upload_to='midias', help_text='Arquivos com extensão .csv')
     is_active = models.BooleanField('Ativo', default=True, help_text='Se ativo, o fornecedor pode ser usado no sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
@@ -38,7 +39,7 @@ class Fornecedor(models.Model):
     def __str__(self):
         return '%s - %s. %s' % (self.cnpj, self.nome, self.tipo_fornecedor)
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):        
         if not self.slug:
             self.slug = gerar_hash()
         self.nome = self.nome.upper()

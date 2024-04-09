@@ -20,7 +20,7 @@ class FornecedorListView(LoginRequiredMixin, ListView):
 
 class FornecedorCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
     model = Fornecedor
-    fields = ['nome', 'cnpj', 'cidade', 'tipo_fornecedor', 'is_active']
+    fields = ['nome', 'cnpj', 'cidade', 'tipo_fornecedor', 'arquivo_medicamentos', 'is_active']
     success_url = 'fornecedor_list'
     
     def get_success_url(self):
@@ -30,7 +30,7 @@ class FornecedorCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateVi
 
 class FornecedorUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
     model = Fornecedor
-    fields = ['nome', 'cnpj', 'cidade', 'tipo_fornecedor', 'is_active']
+    fields = ['nome', 'cnpj', 'cidade', 'tipo_fornecedor', 'arquivo_medicamentos', 'is_active']
     success_url = 'fornecedor_list'
     
     def get_success_url(self):

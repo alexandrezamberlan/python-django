@@ -17,7 +17,8 @@
 			<th>CNPJ</th>
 			<th>Cidade</th>
 			<th>Tipo</th>
-			<th>Ativo</th>
+			<th class="text-center">Lista Medicamentos</th>
+			<th class="text-center">Ativo</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
   		</thead>
@@ -29,7 +30,18 @@
 					<td>{{ fornecedor.cnpj }}</td>
 					<td>{{ fornecedor.cidade }}</td>
 					<td>{{ fornecedor.tipo_fornecedor }}</td>
-					<td>
+					<td class="text-center"> 
+						{% if fornecedor.arquivo_medicamentos %}
+							<a href="{{ fornecedor.arquivo_medicamentos.url }}" target="_blank" class="btn btn-sm btn-success">
+								{% bootstrap_icon 'download' %}
+							</a>
+						{% else %}
+							<a href="" target="_blank" class="btn btn-sm btn-warning disabled">
+								{% bootstrap_icon 'download' %}
+							</a>
+						{% endif %}
+					</td>
+					<td class="text-center">
 						{% if fornecedor.is_active %}
 							{% bootstrap_icon 'thumbs-up' size='sm' %}
 						{% else %}

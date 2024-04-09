@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<form class="form" role="form" method="POST">
+<form class="form" role="form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     
     {% for error in form.non_field_errors %}
