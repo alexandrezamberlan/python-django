@@ -22,7 +22,7 @@
   			<th class="text-center">Excluir</th>
   		</thead>
   		<tbody>
-  			{% for usuario in object_list %}
+  			{% for usuario in object_list %}				
 				<tr>
 					<td>{{ usuario.nome }}</td>
 					<td>{{ usuario.tipo }}</td>
@@ -35,12 +35,12 @@
 					</td>
 					<td>{{ usuario.last_login|date:"d/m/Y H:i" }}</td>
 					<td class="text-center">
-				          {% bootstrap_button content='' href=usuario.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
-				    </td>
-				    <td class="text-center">
-				          {% bootstrap_button content='' href=usuario.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
-				    </td>
-				</tr>
+						{% bootstrap_button content='' href=usuario.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+					</td>
+					<td class="text-center">
+						{% bootstrap_button content='' href=usuario.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+					</td>
+				</tr>			
 			{% endfor %}
   		</tbody>
 	</table>

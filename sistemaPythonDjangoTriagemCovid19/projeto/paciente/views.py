@@ -18,7 +18,7 @@ class PacienteListView(LoginRequiredMixin, ListView):
     model = Paciente
  
 
-class PacienteCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
+class PacienteCreateView(LoginRequiredMixin, CreateView):
     model = Paciente
     fields = ['nome', 'sexo', 'data_nascimento', 'cpf', 'email', 'is_active']
     success_url = 'paciente_list'
@@ -28,7 +28,7 @@ class PacienteCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView
         return reverse(self.success_url)
 
 
-class PacienteUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
+class PacienteUpdateView(LoginRequiredMixin, UpdateView):
     model = Paciente
     fields = ['nome', 'sexo', 'data_nascimento', 'cpf', 'email', 'is_active']
     success_url = 'paciente_list'
@@ -38,7 +38,7 @@ class PacienteUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView
         return reverse(self.success_url) 
 
 
-class PacienteDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
+class PacienteDeleteView(LoginRequiredMixin, EnfermeiroRequiredMixin, DeleteView):
     model = Paciente
     success_url = 'paciente_list'
 

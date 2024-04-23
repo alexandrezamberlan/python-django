@@ -9,12 +9,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.urls import reverse
 
-from utils.decorators import LoginRequiredMixin, StaffRequiredMixin
+from utils.decorators import LoginRequiredMixin, StaffRequiredMixin, EnfermeiroRequiredMixin
 
 from .models import Unidade
 
 
-class UnidadeListView(LoginRequiredMixin, ListView):
+class UnidadeListView(LoginRequiredMixin, EnfermeiroRequiredMixin, ListView):
     model = Unidade
  
 

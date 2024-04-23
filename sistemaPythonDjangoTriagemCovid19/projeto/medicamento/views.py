@@ -16,7 +16,7 @@ from .models import Medicamento
 from .forms import BuscaMedicamentoForm
 
 
-class MedicamentoListView(LoginRequiredMixin, ListView):
+class MedicamentoListView(LoginRequiredMixin, EnfermeiroRequiredMixin, ListView):
     model = Medicamento
 
     def get_context_data(self, **kwargs):

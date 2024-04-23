@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login
+
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -15,11 +16,20 @@ from .models import Usuario
 # from .forms import UsuarioRegisterForm
 
 
-class UsuarioListView(LoginRequiredMixin, ListView):
+class UsuarioListView(LoginRequiredMixin, EnfermeiroRequiredMixin, ListView):
     model = Usuario
 
+    def get_queryset(self):                
+        if (not self.request.user.tipo == 'ADMINISTRADOR'):
+            qs = super().get_queryset().exclude(tipo = 'ADMINISTRADOR')
+        else:
+            qs = super().get_queryset().all()
+            
+        return qs
 
-class UsuarioCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
+
+
+class UsuarioCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
     model = Usuario
     fields = ['tipo', 'nome', 'email', 'password', 'is_active']
     success_url = 'usuario_list'
@@ -29,7 +39,7 @@ class UsuarioCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
         return reverse(self.success_url)
 
 
-class UsuarioUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
+class UsuarioUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
     model = Usuario
     fields = ['tipo', 'nome', 'email', 'is_active']
     success_url = 'usuario_list'
