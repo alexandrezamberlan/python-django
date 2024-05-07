@@ -1,0 +1,6 @@
+Django
+django-bootstrap3
+django-mail-templated
+django-widget-tweaks
+gunicorn
+python-decouple
