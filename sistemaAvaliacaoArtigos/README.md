@@ -39,6 +39,7 @@ Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da C
             - quantidade de páginas miníma e máxima
             - conteúdo do texto esperado (introdução, revisão bibliográfica, metodologia, resultados, conclusões)
         is_active
+        template de critérios (????)
     
 
     - submissão
@@ -54,5 +55,31 @@ Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da C
         arquivo da versão de avaliação (sem autores ou identificação)
         arquivo da versão corrigida e aprovada (com autores ou identificação)
         arquivo do comitê de ética zipado (quando artigo trabalhar com seres humanos)
+        status (aprovado, reprovado, em correção, retirada pelo responsável)
 
+    - avaliacao
+        submissao
+        
+        avaliador 1 (usuario ordinário)
+        avaliação dos critérios do avaliador 1 
+        parecer do avaliador 1
+        recomendação da publicação (1 a 5, sendo 5 publicação certa, 1 não publicar)
+        data da finalização da avaliação
 
+        avaliador 2 (usuario ordinário)
+        avaliação dos critérios do avaliador 2
+        parecer do avaliador 2
+        recomendação da publicação (1 a 5, sendo 5 publicação certa, 1 não publicar)
+        data da finalização da avaliação
+        
+        avaliador 3 (opcional | usuario ordinário)
+        avaliação dos critérios do avaliador 3
+        parecer do avaliador 3
+        recomendação da publicação (1 a 5, sendo 5 publicação certa, 1 não publicar)
+        data da finalização da avaliação
+
+        media da recomendação dos avaliadores
+
+    
+Pendências:
+    - pensar no app critério ou usar um conjunto de critérios padrão baseado na revista disciplinarum (UFN)
