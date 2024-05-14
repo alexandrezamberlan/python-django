@@ -89,3 +89,9 @@ Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da C
     
 Pendências:
     - pensar no app critério ou usar um conjunto de critérios padrão baseado na revista disciplinarum (UFN)
+
+
+Sugestões de CSS
+    - https://bootsnipp.com/snippets/eNe4v
+    - https://adminlte.io/themes/AdminLTE/index2.html
+    - ...
