@@ -1,0 +1,18 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    {{ usuario.nome }}, bem-vindo(a) ao TFG ONLINE. Valide o seu cadastro!
+{% endblock %}
+
+{% block html %}
+    <br>
+    <h2>TFG ONLINE</h2>
+    <p>{{ usuario.nome }}, antes de utilizar a plataforma <strong>TFG ONLINE</strong> você precisa habilitar a sua conta.</p>
+    <p>Clique <a href='{{ usuario.get_usuario_register_activate_url }}'>aqui</a> para prosseguir.</a> </p>
+    <br>
+    <p>***** MENSAGEM GERADA AUTOMATICAMENTE. NÃO RESPONDA. *****</p>
+    <br>
+    <hr>
+    <p><small>Desenvolvido pelo Laboratório de Práticas da Computação UFN.</small></p>
+{% endblock %}

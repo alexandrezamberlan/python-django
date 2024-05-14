@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}
+	{% bootstrap_icon 'question-sign' %} Sobre
+{% endblock %}
+
+
+{% block content %}
+	<center>
+	<!-- <img src="{% static 'core/img/logoLasimon.png' %}"
+         class="img-responsive"> -->
+    </center>
+
+	<h3>Projeto em Parceria entre o Curso Ciência da Computação e o Laboratório de Práticas da Computação UFN</h3>
+	<h4>Versão:</h4>
+	<ul>
+		<li>1.0 de Maio de 2024</li>	
+	</ul>
+	<h4>Apoio:</h4>
+	<ul>
+		<li>Universidade Franciscana</li>
+	</ul>
+	<h4>
+		Colaboradores:
+	</h4>
+	<ul> 
+		<li><strong>UFN</strong></li>
+			<ul>
+				<li>Professor:</li>
+				<ul>
+					<li>Alexandre Zamberlan</li>
+				</ul>
+				<li>Alunos:</li>
+				<ul>
+					<li>Disciplina Tópico Avançados em Informática I - Ciência da Computação</li>				
+				</ul>
+			</ul>		
+	</ul>
+	<h4>
+		Consultoria:
+	</h4>
+		<ul> 
+			<li><a href="http://site.ersistemas.info/" target="_blank"> Empresa ER Sistemas</a> - Robertson Ebling dos Santos (egresso do curso de Sistemas de Informação)</li>
+		</ul>
+{% endblock %}
