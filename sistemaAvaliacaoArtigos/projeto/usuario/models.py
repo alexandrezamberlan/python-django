@@ -17,57 +17,67 @@ class AdministradorAtivoManager(UserManager):
         return super().get_queryset().filter(tipo='ADMINISTRADOR', is_active=True)
 
 
-class EnfermeiroAtivoManager(UserManager):
+class CoordenadorAtivoManager(UserManager):
     def get_queryset(self):
-        return super().get_queryset().filter(Q(tipo='ENFERMEIRO') | Q(tipo='ADMINISTRADOR'), is_active=True)
+        return super().get_queryset().filter(Q(tipo='COORDENADOR') | Q(tipo='ADMINISTRADOR'), is_active=True)
     
-class TecnicoAtivoManager(UserManager):
+class MembroAtivoManager(UserManager):
     def get_queryset(self):
-        return super().get_queryset().filter(tipo='TÉCNICO', is_active=True)
+        return super().get_queryset().filter(tipo='MEMBRO', is_active=True)
 
-class MedicoAtivoManager(UserManager):
-    def get_queryset(self):
-        return super().get_queryset().filter(tipo='MÉDICO', is_active=True)        
-
-
-class TecnicoEnfermeiroAtivoManager(UserManager):
-   def get_queryset(self):
-        return super().get_queryset().filter(Q(tipo='ENFERMEIRO') | Q(tipo='TÉCNICO'), is_active=True)
 
 class Usuario(AbstractBaseUser):
     #1 campo da tupla fica no banco de dados
     #2 campo da tupla eh mostrado para o usuario
     TIPOS_USUARIOS = (
         ('ADMINISTRADOR', 'Administrador'),
-        ('ENFERMEIRO', 'Enfermeiro' ),
-        ('MÉDICO', 'Médico' ),
-        ('TÉCNICO', 'Técnico' ),
+        ('COORDENADOR', 'Coordenador de Evento' ),
+        ('MEMBRO', 'Membro' ),        
+    )
+    #(técnico, graduando, graduado, especialista, mestre, doutor)
+    TITULACAO = (
+        ('TECNICO', 'Técnico'),
+        ('GRADUANDO', 'Graduando' ),
+        ('GRADUADO', 'Graduado' ),        
+        ('ESPECIALISTA', 'Especialista'),
+        ('MESTRE', 'Mestre' ),
+        ('DOUTOR', 'Doutor' ),        
+    )
+
+    #(Ciências Humana, Ciências da Saúde, Ciências Sociais, Ciências Tecnológicas)
+    AREA = (
+        ('HUMANAS', 'Ciências Humanas'),
+        ('SAUDE', 'Ciências da Saúde' ),
+        ('SOCIAIS', 'Ciências Sociais' ),        
+        ('TECNOLOGICA', 'Ciências Tecnológicas'),        
     )
 
     USERNAME_FIELD = 'email'
 
-    tipo = models.CharField('Tipo do usuário *', max_length=15, choices=TIPOS_USUARIOS, default='TÉCNICO', help_text='* Campos obrigatórios')
+    tipo = models.CharField('Tipo do usuário *', max_length=15, choices=TIPOS_USUARIOS, default='MEMBRO', help_text='* Campos obrigatórios')
     nome = models.CharField('Nome completo *', max_length=100)
+    titulacao = models.CharField('Titulação', max_length=15, choices=TITULACAO, null=True, blank=True, help_text='Selecione a maior titulação.')
+    area = models.CharField('Área de pesquisa do usuário *', max_length=11, choices=AREA, help_text='Escolha área de interesse de trabalho.')
+    instituicao = models.CharField('Instituição a que pertence *', max_length=50, help_text='Registre a instituição, ou universidade, ou empresa.')
     email = models.EmailField('Email', unique=True, max_length=100, db_index=True)
+    celular = models.CharField('Número celular com DDD *', max_length=11, help_text="Use DDD, por exemplo 55987619832")
+    cpf = models.CharField('CPF *', max_length=14, help_text='ATENÇÃO: Somente os NÚMEROS')    
     
     is_active = models.BooleanField('Ativo', default=False, help_text='Se ativo, o usuário tem permissão para acessar o sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
     objects = UserManager()
     administradores = AdministradorAtivoManager()
-    enfermeiros = EnfermeiroAtivoManager()
-    tecnicos = TecnicoAtivoManager()
-    medicos = MedicoAtivoManager()
-    tecnicos_enfermeiros = TecnicoEnfermeiroAtivoManager()
+    coordenadores = CoordenadorAtivoManager()
+    membros = MembroAtivoManager()
 
     class Meta:
-        ordering            =   ['nome']
+        ordering            =   ['-tipo','nome']
         verbose_name        =   ('usuário')
         verbose_name_plural =   ('usuários')
 
     def __str__(self):
         return '%s - %s' % (self.nome, self.email)
-
 
     def has_module_perms(self, app_label):
         return True
@@ -85,6 +95,7 @@ class Usuario(AbstractBaseUser):
         if not self.slug:
             self.slug = gerar_hash()
         self.nome = self.nome.upper()
+        self.instituicao = self.instituicao.upper()
         if not self.id:
             self.set_password(self.password) #criptografa a senha digitada no forms
         super(Usuario, self).save(*args, **kwargs)
