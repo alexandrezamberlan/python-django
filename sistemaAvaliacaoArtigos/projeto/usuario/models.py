@@ -116,11 +116,11 @@ class Usuario(AbstractBaseUser):
 
     @property
     def get_absolute_url(self):
-        return reverse('usuario_update', args=[str(self.id)])
+        return reverse('usuario_update', kwargs={'slug': self.slug})
 
     @property
     def get_delete_url(self):
-        return reverse('usuario_delete', args=[str(self.id)])
+        return reverse('usuario_delete', kwargs={'slug': self.slug})
 
     @property
     def get_usuario_register_activate_url(self):
