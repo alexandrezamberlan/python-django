@@ -8,9 +8,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-    path('usuario/', include('usuario.urls')),
-   
-    path(r'accounts/', include('django.contrib.auth.urls')),
+    path('usuario/', include('usuario.urls')),   
+    path('', include('django.contrib.auth.urls')),
 ]
 
 #url para arquivos de media quando em desenvolvimento

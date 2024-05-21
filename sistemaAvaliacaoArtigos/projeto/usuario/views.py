@@ -10,13 +10,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from mail_templated import EmailMessage
 
-from utils.decorators import LoginRequiredMixin, StaffRequiredMixin, EnfermeiroRequiredMixin
+from utils.decorators import LoginRequiredMixin, StaffRequiredMixin, CoordenadorRequiredMixin
 
 from .models import Usuario
 # from .forms import UsuarioRegisterForm
 
 
-class UsuarioListView(LoginRequiredMixin, EnfermeiroRequiredMixin, ListView):
+class UsuarioListView(LoginRequiredMixin, CoordenadorRequiredMixin, ListView):
     model = Usuario
 
     def get_queryset(self):                
@@ -29,9 +29,9 @@ class UsuarioListView(LoginRequiredMixin, EnfermeiroRequiredMixin, ListView):
 
 
 
-class UsuarioCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
+class UsuarioCreateView(LoginRequiredMixin, CoordenadorRequiredMixin, CreateView):
     model = Usuario
-    fields = ['tipo', 'nome', 'email', 'password', 'is_active']
+    fields = ['tipo', 'nome', 'titulacao', 'area', 'instituicao', 'celular', 'cpf', 'email', 'password', 'is_active']
     success_url = 'usuario_list'
     
     def get_success_url(self):
@@ -39,9 +39,9 @@ class UsuarioCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView)
         return reverse(self.success_url)
 
 
-class UsuarioUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
+class UsuarioUpdateView(LoginRequiredMixin, CoordenadorRequiredMixin, UpdateView):
     model = Usuario
-    fields = ['tipo', 'nome', 'email', 'is_active']
+    fields = ['tipo', 'nome', 'titulacao', 'area', 'instituicao', 'celular', 'cpf', 'email', 'is_active']
     success_url = 'usuario_list'
     
     def get_success_url(self):
