@@ -46,7 +46,13 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'password_change' %}">Alterar senha</a></li>
-            <li><a href="{% url 'logout' %}?next=/">Sair</a></li>
+            {% comment %} <li><a href="{% url 'logout' %}?next=/">Sair</a></li> {% endcomment %}
+            <li>
+              <form method="post" action="{% url 'logout' %}?next=/">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+            </form>
+            </li>
           </ul>
         </li>
       </ul>
