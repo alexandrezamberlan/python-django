@@ -3,16 +3,16 @@
 {% load static %}
 
 {% block title %}
-      <img src="{% static 'core/img/logoUFN_hor.jpg' %}"
-      class="img-responsive" style="max-width: 120px;">
+      <!-- <img src="{% static 'core/img/logoUFN_hor.jpg' %}"
+      class="img-responsive" style="max-width: 120px;"> -->
 {% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
       <center>
-            <h2>SAOA</h2>
-            <h3>Laboratório de Práticas da Computação UFN</h3>
+            <img src="{% static 'core/img/logo.jpg' %}"
+            class="img-responsive" style="max-width: 320px;">
 	</center>
 {% endif %}
 
