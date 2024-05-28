@@ -17,6 +17,7 @@ Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da C
 
         Obs.:
             - usuário faz autocadastro (exceto administrador)
+                - colocar campo de aceite dos termos de uso
     
     - instituição
         - nome
