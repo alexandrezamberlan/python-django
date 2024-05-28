@@ -10,10 +10,10 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-      <center>
+      <div class="text-center">
             <img src="{% static 'core/img/logo.jpg' %}"
-            class="img-responsive" style="max-width: 320px;">
-	</center>
+            class="img-fluid" style="max-width: 320px;">
+      </div>
 {% endif %}
 
 {% endblock %}
