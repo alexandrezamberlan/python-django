@@ -96,6 +96,7 @@ class Usuario(AbstractBaseUser):
             self.slug = gerar_hash()
         self.nome = self.nome.upper()
         self.instituicao = self.instituicao.upper()
+        self.email = self.email.lower()
         if not self.id:
             self.set_password(self.password) #criptografa a senha digitada no forms
         super(Usuario, self).save(*args, **kwargs)

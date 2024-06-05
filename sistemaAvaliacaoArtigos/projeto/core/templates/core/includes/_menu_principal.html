@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -23,6 +23,8 @@
           <ul class="dropdown-menu">
             <li><a href="{% url 'usuario_list' %}">{% bootstrap_icon 'user' %} Usuários</a></li>            
             <li><a href="{% url 'instituicao_list' %}">{% bootstrap_icon 'tower' %} Instituições</a></li>            
+            <li role="separator" class="divider"></li>
+            <li><a href="{% url 'tipo_evento_list' %}">{% bootstrap_icon 'bookmark' %} Tipos de Eventos</a></li>            
           </ul>
         </li>
 

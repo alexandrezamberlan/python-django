@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 
 {% block title %}
-	{% bootstrap_icon 'tower' %} Instituição
+	{% bootstrap_icon 'bookmark' %} Tipo de Evento
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
 				</div>			
 				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 					<br>
-					<a href="{% url 'instituicao_create' %}" class="btn btn-md btn-primary" style="width: 100%;">{% bootstrap_icon 'record' %} Cadastrar instituição</a>
+					<a href="{% url 'tipo_evento_create' %}" class="btn btn-md btn-primary" style="width: 100%;">{% bootstrap_icon 'record' %} Cadastrar tipo de evento</a>
 				</div>			
 			</div>
 		</form>
@@ -30,39 +30,30 @@
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<thead>
-				<th>Nome</th>
-				<th>Localidade</th>								
+				<th>Descrição</th>				
 				<th class="text-center">Ativo</th>
 				<th class="text-center">Editar</th>
 				<th class="text-center">Excluir</th>
 			</thead>
 
 			<tbody>
-				{% for instituicao in object_list %}
+				{% for tipo_evento in object_list %}
 					<tr>
 						<td>
-							{{ instituicao.nome }}
-							{% if instituicao.sigla %}
-								| <small>{{ instituicao.sigla }}</small>
-							{% endif %}
+							{{ tipo_evento.descricao }}
 						</td>
-						<td>
-							{{ instituicao.cidade }}<br>
-							<small> {{instituicao.estado}} | {{ instituicao.pais }}</small>
-						</td>												
-						
 						<td class="text-center">
-							{% if instituicao.is_active %}
+							{% if tipo_evento.is_active %}
 								{% bootstrap_icon 'thumbs-up' size='sm' %}
 							{% else %}
 								{% bootstrap_icon 'thumbs-down' size='sm' %}
 							{% endif %}
 						</td>
 						<td class="text-center">
-							{% bootstrap_button content='' href=instituicao.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+							{% bootstrap_button content='' href=tipo_evento.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 						</td>
 						<td class="text-center">
-							{% bootstrap_button content='' href=instituicao.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+							{% bootstrap_button content='' href=tipo_evento.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
 						</td>
 					</tr>
 				{% endfor %}

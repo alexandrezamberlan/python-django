@@ -2,18 +2,59 @@
 {% load bootstrap3 %}
 {% load static %}
 
-{% block title %}
-      <!-- <img src="{% static 'core/img/logoUFN_hor.jpg' %}"
-      class="img-responsive" style="max-width: 120px;"> -->
+{% block title %}     
+      <img src="{% static 'core/img/logo.jpg' %}"
+      class="img-fluid" style="max-width: 220px;">
 {% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-      <div class="text-center">
-            <img src="{% static 'core/img/logo.jpg' %}"
-            class="img-fluid" style="max-width: 320px;">
-      </div>
+      <div class="container-fluid">
+            <!-- Primeira linha -->
+            <div class="row">
+            <div class="col-md-4">
+                  <!-- Conteúdo da primeira coluna -->
+                  <div class="panel panel-default">
+                  <div class="panel-heading"><b>Submissões|Avaliações</b></div>
+                  <div class="panel-body">
+                        ?? precisam de atenção<br>
+                        ?? precisam de atenção
+                  </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                  <!-- Conteúdo da segunda coluna -->
+                  <div class="panel panel-default">
+                  <div class="panel-heading"><b>Pareceres</b></div>
+                  <div class="panel-body">
+                        ?? precisam de atenção
+                  </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                  <!-- Conteúdo da terceira coluna -->
+                  <div class="panel panel-default">
+                  <div class="panel-heading"><b>Projetos com pendências</b></div>
+                  <div class="panel-body">
+                        ?? pendentes
+                  </div>
+                  </div>
+            </div>
+            </div>    
+            <!-- Segunda linha -->
+            <div class="row">
+            <div class="col-md-12">
+                  <!-- Conteúdo da sexta coluna -->
+                  <div class="panel panel-default">
+                  <div class="panel-heading"><b>Avisos</b></div>
+                  <div class="panel-body">
+                        
+                  </div>
+                  </div>
+            </div>
+            </div>
+      </div>     
 {% endif %}
 
 {% endblock %}
