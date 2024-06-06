@@ -1,5 +1,8 @@
 # Sistema Avaliação de Artigos
 
+
+
+
 Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da Computação, para submissão e avaliação de artigos científicos.
 
 - apps
