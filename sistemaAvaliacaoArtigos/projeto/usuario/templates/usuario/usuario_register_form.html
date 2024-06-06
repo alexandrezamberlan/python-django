@@ -1,0 +1,31 @@
+{% extends "usuario/usuario_register_base.html" %}
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+
+{% block actions %} 
+{% endblock %}
+
+{% block title %}
+	Auto cadastro de usuário | Membro
+{% endblock %}
+
+{% block content %}
+<form class="form" role="form" method="POST">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  
+  {% bootstrap_field form.tipo %}
+  {% bootstrap_field form.nome %}
+  {% bootstrap_field form.titulacao %}
+  {% bootstrap_field form.area %}
+  {% bootstrap_field form.instituicao %}
+  {% bootstrap_field form.email %}
+  {% bootstrap_field form.celular|add_class:'mask_tel_celular' %} 
+  {% bootstrap_field form.cpf%} 
+  {% bootstrap_field form.password %}
+  
+  {% buttons submit='Gravar' %}
+    <a href="{% url 'home_redirect' %}"class="btn btn-warning" role="button">Voltar</a>
+  {% endbuttons %}
+</form>
+{% endblock %}

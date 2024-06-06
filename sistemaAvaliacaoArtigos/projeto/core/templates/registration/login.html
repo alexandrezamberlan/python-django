@@ -11,7 +11,7 @@
             <div class="text-center">
               <br> 
               <img src="{% static 'core/img/logo.jpg' %}"
-                   class="img-fluid" style="max-width: 300px;">                            
+                   class="img-fluid" style="max-width: 280px;">                            
             </div>  
             <br>
               <div class="account-wall">
@@ -25,21 +25,16 @@
                   </button>
                 </p>
                 <p style="text-align:center;">
-                  <a class="btn btn-warning" style="width:100%;" href="{% url 'password_reset' %}">{% bootstrap_icon 'glyphicon glyphicon-flag' %} Resetar senha</a>
+                  <a class="btn btn-info" style="width:49%;" href="{% url 'usuario_register' %}">{% bootstrap_icon 'glyphicon glyphicon-user' %} Criar conta</a>
+                  <a class="btn btn-warning" style="width:49%;" href="{% url 'password_reset' %}">{% bootstrap_icon 'glyphicon glyphicon-flag' %} Resetar senha</a>
                 </p>
                 </form>
               </div>
-              <div class="alert alert-info text-center">
-                <h4 class="text-center">
-                  <small>
-                    Desenvolvido por <a href="https://www.ufn.edu.br/site/ensino/graduacao/ciencia-da-computacao" target="_blank"> Ciência da Computação UFN</a><br>
-                    Mantido por <a href="https://www.lapinf.ufn.edu.br" target="_blank">Laboratório de Práticas UFN</a>
-                  </small></h4>              
-            </div>
-            <div class="alert alert-warning text-center">
-                <p><small>Universidade Franciscana - UFN | Contato: lapinf@ufn.edu.br</small></p>
-            </div>
-            <br>               
+              <br>
+              <div class="text-center">
+                <a href="https://lapinf.ufn.edu.br" target="_blank"><img src="{% static 'core/img/logo_lapinf_hor.png' %}"
+                  style="width: 240px;"></a>                          
+              </div>
         </div>
     </div>
 {% endblock %}

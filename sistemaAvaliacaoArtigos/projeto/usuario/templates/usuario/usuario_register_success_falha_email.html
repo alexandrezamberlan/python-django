@@ -1,0 +1,16 @@
+{% extends "usuario/usuario_register_base.html" %}
+{% load bootstrap3 %}
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	{% bootstrap_icon 'user' %} Auto cadastro de usuário
+{% endblock %}
+
+{% block content %}
+{% bootstrap_alert 'Parabéns!! O seu usuário foi cadastrado com sucesso. Porém, não foi possível enviar email de validação. Aguarde o Responsável pelo Torneio ou o Administrador do Treino Scout fazer a liberação' 'warning' %}
+<form action=" {% url 'home_redirect' %}" method=" get">
+    <input type="submit" class = 'btn btn-warning'value="Voltar" />
+</form>
+{% endblock %}
