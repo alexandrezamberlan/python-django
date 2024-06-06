@@ -1,5 +1,6 @@
 # Sistema Avaliação de Artigos
 
+<img width="1063" alt="telaPrincipal" src="https://github.com/alexandrezamberlan/python-django/assets/5599081/063d72b1-1a4c-4a14-a3fe-187d866bdefb">
 
 
 
