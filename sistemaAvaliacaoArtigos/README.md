@@ -38,7 +38,9 @@ Sistema Web, hospedado na UFN, desenvolvido por alunos do curso de Ciência da C
         - instituição (relação com app instituição)
         - data do evento
         - coordenador do evento (relação com app usuario)
+        - coordenador suplente (opcional - relação com app usuario)
         - data limite de envio de trabalhos
+        - arquivo com template para o evento
         - regras de publicação (criar app de documentos)
             - modelo do documento (arquivo template)
             - quantidade de páginas miníma e máxima
