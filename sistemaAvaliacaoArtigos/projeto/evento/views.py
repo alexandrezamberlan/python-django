@@ -52,7 +52,7 @@ class EventoListView(LoginRequiredMixin, ListView):
 
 class EventoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
     model = Evento
-    fields = ['nome', 'sigla', 'pais', 'estado', 'cidade', 'is_active']
+    fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
     success_url = 'evento_list'
     
     def get_success_url(self):
@@ -62,8 +62,8 @@ class EventoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
 
 class EventoUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     model = Evento
-    fields = ['nome', 'sigla', 'pais', 'estado', 'cidade', 'is_active']
-    success_url = 'Evento_list'
+    fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
+    success_url = 'evento_list'
     
     def get_success_url(self):
         messages.success(self.request, 'Evento atualizado com sucesso na plataforma!')
@@ -72,10 +72,10 @@ class EventoUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
 
 class EventoDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
     model = Evento
-    success_url = 'Evento_list'
+    success_url = 'evento_list'
 
     def get_success_url(self):
-        messages.success(self.request, 'Evento removido com sucesso na plataforma!')
+        messages.success(self.request, 'Evento removido com sucesso da plataforma!')
         return reverse(self.success_url) 
 
     def delete(self, request, *args, **kwargs):
@@ -88,5 +88,5 @@ class EventoDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
         try:
             self.object.delete()
         except Exception as e:
-            messages.error(request, 'Há dependências ligadas à essa Evento, permissão negada!')
+            messages.error(request, 'Há dependências ligadas à esse Evento, permissão negada!')
         return redirect(self.success_url)

@@ -15,8 +15,8 @@ class Evento(models.Model):
     nome = models.CharField('Nome do evento *', unique=True, db_index=True, max_length=150, help_text='* Campo obrigatório')
     tipo = models.ForeignKey('tipo_evento.TipoEvento', verbose_name= 'Tipo do evento *', on_delete=models.PROTECT, related_name='tipo_evento')
     instituicao = models.ForeignKey('instituicao.Instituicao', verbose_name= 'Instituição responsável pelo evento *', on_delete=models.PROTECT, related_name='instituicao')
-    dataInicio = models.DateField('Data de início do evento *', max_length=10, help_text='Use dd/mm/aaaa')
-    dataLimiteEnvioTrabalhos = models.DateField('Data limite para envio de trabalhos *', max_length=10, help_text='Use dd/mm/aaaa')
+    data_inicio = models.DateField('Data de início do evento *', max_length=10, help_text='Use dd/mm/aaaa')
+    data_limite_trabalhos = models.DateField('Data limite para envio de trabalhos *', max_length=10, help_text='Use dd/mm/aaaa')
     coordenador = models.ForeignKey('usuario.Usuario', verbose_name= 'Coordenador responsável *', on_delete=models.PROTECT, related_name='coordenador')
     coordenador_suplente = models.ForeignKey('usuario.Usuario', verbose_name= 'Coordenador suplente', on_delete=models.PROTECT, related_name='coordenador_suplente', null=True, blank=True)
     modelo_artigo = models.CharField('Qual o modelo para artigos? ', max_length=150, help_text='Informe o modelo, como ABNT, SBC, IEEE')
@@ -28,7 +28,7 @@ class Evento(models.Model):
     eventos_ativos = EventoAtivoManager()
 
     class Meta:
-        ordering            =   ['-is_active','-dataLimiteEnvioTrabalhos','nome']
+        ordering            =   ['-is_active','-data_limite_trabalhos','nome']
         verbose_name        =   'evento'
         verbose_name_plural =   'eventos'
 
