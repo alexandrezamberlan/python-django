@@ -15,7 +15,7 @@ from utils.decorators import LoginRequiredMixin, StaffRequiredMixin
 
 from .models import Evento
 
-from .forms import BuscaEventoForm
+from .forms import BuscaEventoForm, EventoForm
 
 
 class EventoListView(LoginRequiredMixin, ListView):
@@ -52,7 +52,8 @@ class EventoListView(LoginRequiredMixin, ListView):
 
 class EventoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
     model = Evento
-    fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
+    # fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
+    form_class = EventoForm
     success_url = 'evento_list'
     
     def get_success_url(self):
@@ -62,7 +63,8 @@ class EventoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
 
 class EventoUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     model = Evento
-    fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
+    # fields = ['nome', 'tipo', 'instituicao', 'coordenador', 'coordenador_suplente', 'data_inicio', 'data_limite_trabalhos', 'modelo_artigo', 'arquivo_modelo', 'is_active']
+    form_class = EventoForm
     success_url = 'evento_list'
     
     def get_success_url(self):
