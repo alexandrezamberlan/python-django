@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
 
+import os
+
 from django.db import models
+from django.dispatch import receiver
 from django.urls import reverse
 
 
@@ -33,7 +36,7 @@ class Evento(models.Model):
         verbose_name_plural =   'eventos'
 
     def __str__(self):
-        return '%s | %s' % (self.nome, self.dataLimiteEnvioTrabalhos)
+        return '%s | %s | %s' % (self.nome, self.data_limite_trabalhos.strftime("%d/%m/%Y"), self.instituicao.nome)
 
     def save(self, *args, **kwargs):        
         if not self.slug:
@@ -49,3 +52,32 @@ class Evento(models.Model):
     @property
     def get_delete_url(self):
         return reverse('evento_delete', kwargs={'slug': self.slug})
+
+
+#triggers para limpeza dos arquivos apagados ou alterados. No Django é chamado de signals
+#deleta o arquivo fisico ao excluir o item midia
+@receiver(models.signals.post_delete, sender=Evento)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    if instance.arquivo_modelo:
+        if os.path.isfile(instance.arquivo_modelo.path):
+            os.remove(instance.arquivo_modelo.path)
+
+#deleta o arquivo fisico ao alterar o arquivo do item midia
+@receiver(models.signals.pre_save, sender=Evento)
+def auto_delete_file_on_change(sender, instance, **kwargs):
+    if not instance.pk:
+        return False
+    try:
+        obj = Evento.objects.get(pk=instance.pk)
+
+        if not obj.arquivo_modelo:
+            return False
+
+        old_file = obj.arquivo_modelo
+    except Evento.DoesNotExist:
+        return False
+
+    new_file = instance.arquivo_modelo
+    if not old_file == new_file:
+        if os.path.isfile(old_file.path):
+            os.remove(old_file.path)

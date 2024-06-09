@@ -32,13 +32,12 @@
 			<thead>
 				<th>Evento</th>
 				<th>Coordenação</th>
-				<th>Modelo de artigo</th>
+				<th>Template artigo</th>
 				<th>Data limite de submissão</th>
 				<th class="text-center">Ativo</th>
 				<th class="text-center">Editar</th>
 				<th class="text-center">Excluir</th>
 			</thead>
-
 			<tbody>
 				{% for evento in object_list %}
 					<tr>
@@ -53,7 +52,17 @@
 							{% endif %}
 						</td>	
 						<td>
-							{{ evento.modelo_artigo }}
+							{{ evento.modelo_artigo }} | 
+							{% if evento.arquivo_modelo %} 
+							
+							<a href="{{ evento.arquivo_modelo.url }}" target="_blank" class="btn btn-sm btn-success">
+								{% bootstrap_icon 'download' %}
+							</a>
+						{% else %}
+							<a href="" target="_blank" class="btn btn-sm btn-warning disabled">
+								{% bootstrap_icon 'download' %}
+							</a>
+						{% endif %}
 						</td>
 						<td>
 							{{ evento.data_limite_trabalhos|date:'d/m/Y' }}
