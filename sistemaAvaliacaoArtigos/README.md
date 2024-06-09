@@ -15,6 +15,11 @@
     - fazer logout quando o usuário conectado por 30 min ou quando fechar navegador
     - validar em evento se coordenador responsa'vel e coordenador suplemente são a mesma pessoa
     - na visão de coordenador, possibilitar que o usuário envie trabalhos mas para outros eventos, exceto para os eventos que coordenada. O mesmo para o coordenador responsável
+    - disponibilizar app no servidor lapinf.ufn
+        - mysql
+        - gunicorn
+        - nginx
+        - certbot
 
 - apps
     - usuario
