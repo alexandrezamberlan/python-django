@@ -3,9 +3,8 @@
 <img width="1063" alt="telaPrincipal" src="https://github.com/alexandrezamberlan/python-django/assets/5599081/063d72b1-1a4c-4a14-a3fe-187d866bdefb">
 
 
-
-
 - PENDÊNCIAS 
+    - termo de uso e política de funcionamento
     - criar esquema de mandar email:
         - no autocadastro
         - quando submissão é realizada
@@ -54,6 +53,7 @@
         - data do evento
         - coordenador do evento (relação com app usuario) - DEVE SER TIPO COORDENADOR EM USUÁRIO
         - coordenador suplente (opcional - relação com app usuario) - DEVE SER TIPO COORDENADOR EM USUARIO
+        - email comissão científica
         - data limite de envio de trabalhos
         - arquivo com template para o evento
         - regras de publicação (criar app de documentos)
@@ -112,3 +112,5 @@ Sugestões de CSS
     - https://bootsnipp.com/snippets/eNe4v
     - https://adminlte.io/themes/AdminLTE/index2.html
     - https://bootswatch.com/3/
+
+Icons bootstrap - https://www.w3schools.com/icons/bootstrap_icons_glyphicons.asp

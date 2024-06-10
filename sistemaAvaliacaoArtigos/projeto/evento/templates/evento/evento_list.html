@@ -32,6 +32,7 @@
 			<thead>
 				<th>Evento</th>
 				<th>Coordenação</th>
+				<th>Email comissão científica</th>
 				<th>Template artigo</th>
 				<th>Data limite de submissão</th>
 				<th class="text-center">Ativo</th>
@@ -51,6 +52,9 @@
 								<small> Suplente: {{evento.coordenador_suplente}} </small>
 							{% endif %}
 						</td>	
+						<td>
+							{{  evento.email }}
+						</td>
 						<td>
 							{{ evento.modelo_artigo }} | 
 							{% if evento.arquivo_modelo %} 

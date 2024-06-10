@@ -22,6 +22,7 @@ class Evento(models.Model):
     data_limite_trabalhos = models.DateField('Data limite para envio de trabalhos *', max_length=10, help_text='Use dd/mm/aaaa')
     coordenador = models.ForeignKey('usuario.Usuario', verbose_name= 'Coordenador responsável *', on_delete=models.PROTECT, related_name='coordenador')
     coordenador_suplente = models.ForeignKey('usuario.Usuario', verbose_name= 'Coordenador suplente', on_delete=models.PROTECT, related_name='coordenador_suplente', null=True, blank=True)
+    email = models.EmailField('Email oficial da comissão científica *', max_length=100,help_text='Campo obrigatório. Email para contato dos membros que estão submetendo trabalhos.', null=True, blank=False)
     modelo_artigo = models.CharField('Qual o modelo para artigos? ', max_length=150, help_text='Informe o modelo, como ABNT, SBC, IEEE')
     arquivo_modelo = models.FileField('Carregue arquivo zipado com modelos', null=True, blank=True, upload_to='midias', help_text='Utilize arquivo compactado do tipo zip')
     is_active = models.BooleanField('Ativo', default=True, help_text='Se ativo, o evento está liberado para chamada de artigos')

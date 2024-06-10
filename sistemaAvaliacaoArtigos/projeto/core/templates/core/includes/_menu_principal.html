@@ -29,18 +29,32 @@
           </ul>
         </li>
 
-       
-        <!-- <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'print' %} Relatórios <span class="caret"></span></a>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'edit' %} Submissões <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Filtros gerais</a></li>
-            <li><a href="#">Por edital</a></li>
-            <li><a href="#">Anomalias</a></li>
+            <li><a href="#">Em andamento | ativas</a></li>
+            <li><a href="#">Todas</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Impressões</a></li>
+            <li><a href="#">Minhas submissões</a></li>
           </ul>
-        </li> -->
-        
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'check' %} Avaliações <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Em andamento | ativas</a></li>
+            <li><a href="#">Todas</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Minhas avaliações</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'wrench' %} Suporte <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="mailto:lapinf@ufn.edu.br" target="_blank">lapinf@ufn.edu.br</a></li>
+          </ul>
+        </li> 
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -54,7 +68,7 @@
             <li>
               <form method="post" action="{% url 'logout' %}?next=/">
                 {% csrf_token %}
-                <button type="submit">Log Out</button>
+                <button type="submit" class="btn btn-warning btn-md"  style="width: 100%;">Log Out</button>
               </form>
             </li>
           </ul>
