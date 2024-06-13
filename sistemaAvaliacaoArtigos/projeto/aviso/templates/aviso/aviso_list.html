@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'envelope' %} Avisos
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <a href="{% url 'aviso_create' %}" class="btn btn-lg btn-primary">{% bootstrap_icon 'record' %} Cadastrar aviso</a>
+	  </div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<th>Título</th>
+				<th>Texto</th>
+				<th class="text-center">Data</th>
+				<th class="text-center">Destinatário</th>
+				<th class="text-center">Status</th>
+				
+				<th class="text-center">Enviar</th>
+				<th class="text-center">Editar</th>
+				<th class="text-center">Excluir</th>
+			</thead>
+
+			<tbody>
+				{% for aviso in object_list %}
+					<tr>
+						<td>{{ aviso.titulo }}</td>
+						{% comment %} <td>{{ aviso.texto }}</td> {% endcomment %}
+						<td><span data-toggle="tooltip" title='{{aviso.texto}}'>{{ aviso.texto|truncatechars:100 }}</span></td>
+						<td class="text-center">{{ aviso.data|date:'d/m/Y'  }}</td>
+						<td class="text-center">{{ aviso.destinatario }}</td>
+						<td class="text-center">
+							<span data-toggle="tooltip"  title='Aviso publicado e se foi enviado'>
+								{% if aviso.is_active %}
+									<span class="label label-success">
+										Ativo
+									</span>
+								{% else %}
+									<span class="label label-warning">
+										Inativo
+									</span>
+								{% endif %}
+								<br>
+								{% if aviso.enviado %}
+									<span class="label label-primary">
+										Enviado
+									</span>
+								{% else %}
+									<span class="label label-danger">
+										Não enviado
+									</span>
+								{% endif %}
+							</span>
+						</td>
+						
+						<td class="text-center">
+							<span data-toggle="tooltip"  title='Enviar por email' >
+								{% bootstrap_button content='' href=aviso.get_envia_email_url button_type='link' icon='send' button_class='btn btn-warning' size='sm' %}
+							</span>
+						</td>
+						<td class="text-center">
+							<span data-toggle="tooltip"  title='Editar aviso'>
+								{% bootstrap_button content='' href=aviso.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+							</span>
+						</td>
+						<td class="text-center">
+							{% bootstrap_button content='' href=aviso.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

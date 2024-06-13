@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'mail_templated',
     'widget_tweaks',
     
+    'aviso',
     'evento',
     'instituicao',
     'tipo_evento',

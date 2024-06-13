@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	{% bootstrap_icon 'envelope' %} Cadastro de Aviso
+{% endblock %}
+
+{% block content %}
+<form class="form" role="form" method="POST">
+    {% csrf_token %}
+    <!-- {{ form.non_field_errors }} -->
+    
+    {% for error in form.non_field_errors %}
+      {% bootstrap_alert error 'danger' %}
+    {% endfor %}
+    
+    {% bootstrap_field form.titulo %}
+    {% bootstrap_field form.texto %}
+
+    {% bootstrap_field form.destinatario %}
+    {% bootstrap_field form.enviado %}
+    {% bootstrap_field form.is_active %}
+    
+    {% buttons submit='Gravar' %}
+       <a href="javascript:history.go(-1);" class="btn btn-warning" role="button">Voltar</a>
+    {% endbuttons %}
+</form>
+{% endblock %}

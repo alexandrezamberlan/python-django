@@ -1,0 +1,24 @@
+{% load bootstrap3 %}
+<div class="row">
+	{% for aviso in avisos %}
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4><span class="badge badge-default">{{ aviso.data|date:'d/m/Y' }}</span> <small>{{ aviso.titulo }}</small></h4>
+				</div>
+				<div class="panel-body text-justify">					
+					{{ aviso.texto|linebreaks }}
+				</div>
+			</div>
+            {% if not user.is_authenticated %}<hr>{% endif %}
+		</div>
+	{% empty %}
+        {% if user.is_authenticated %}
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			{% bootstrap_alert 'Nenhum aviso' 'info' %}
+		</div>
+        {% else %}
+            <center><small><i>Nenhum aviso!</i></small></center>
+        {% endif %}
+	{% endfor %}
+</div>

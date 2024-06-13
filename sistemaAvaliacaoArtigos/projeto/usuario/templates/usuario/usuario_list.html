@@ -38,7 +38,7 @@
 			<thead>
 				<th>Nome</th>
 				<th>Tipo</th>
-				<th>E-mail</th>
+				<th>E-mail | Celular</th>
 				<th class="text-center">Ativo</th>
 				<th>Último acesso</th>
 				<th class="text-center">Editar</th>
@@ -49,7 +49,10 @@
 					<tr>
 						<td>{{ usuario.nome }}</td> 
 						<td>{{ usuario.tipo }}</td>
-						<td>{{ usuario.email }}</td>
+						<td>
+							{{ usuario.email }} <br>
+							<a href="https://api.whatsapp.com/send?phone=55{{ usuario.celular }}" target="_blank"><small class="badge">{% bootstrap_icon 'comment' %} {{ usuario.celular }}</small></a>	
+						</td>
 						
 						<td class="text-center">
 							{% if usuario.is_active %}
