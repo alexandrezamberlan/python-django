@@ -1,5 +1,6 @@
 {% extends "usuario/usuario_register_base.html" %}
 {% load bootstrap3 %}
+
 {% load widget_tweaks %}
 
 {% block actions %} 
@@ -21,7 +22,7 @@
   {% bootstrap_field form.instituicao %}
   {% bootstrap_field form.email %}
   {% bootstrap_field form.celular|add_class:'mask_tel_celular' %} 
-  {% bootstrap_field form.cpf%} 
+  {% bootstrap_field form.cpf|add_class:'mask_cpf' %}
   {% bootstrap_field form.password %}
   
   {% buttons submit='Gravar' %}
