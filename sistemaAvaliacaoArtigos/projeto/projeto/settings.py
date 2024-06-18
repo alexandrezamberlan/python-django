@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'instituicao',
     'tipo_evento',
     'usuario',
+    'submissao',
 ]
 
 MIDDLEWARE = [

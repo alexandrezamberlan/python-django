@@ -4,7 +4,11 @@
 
 
 - PENDÊNCIAS 
-    - termo de uso e política de funcionamento
+    - em submissao coautores (lista de usuários ordinários)
+    - em evento numero_maximo de autores        
+    - em submissao enviar email de registro de submissão para o responsável       
+    - em evento categoria ou subárea do trabalho (???)
+    - no autocadastro termo de uso e política de funcionamento
     - criar esquema de mandar email:
         - no autocadastro
         - quando submissão é realizada
