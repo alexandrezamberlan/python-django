@@ -9,7 +9,8 @@
 {% endblock %}
 
 {% block content %}
-{% bootstrap_alert 'Parabéns!! O seu usuário foi cadastrado com sucesso. Acesse o seu email para validar o seu cadastro. Caso não encontre a mensagem na caixa de entrada, verifique a sua caixa de SPAM' 'success' %}
+{% bootstrap_alert 'Parabéns!! O seu usuário foi cadastrado com sucesso. Acesse o seu email para validar o seu cadastro. 
+Caso não encontre a mensagem na caixa de entrada, verifique a sua caixa de SPAM' 'success' %}
 <form action=" {% url 'home_redirect' %}" method=" get">
     <input type="submit" class = 'btn btn-info'value="Voltar" />
 </form>

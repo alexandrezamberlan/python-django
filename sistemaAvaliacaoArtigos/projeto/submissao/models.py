@@ -20,9 +20,10 @@ class SubmissaoAtivoManager(models.Manager):
 
 class Submissao(models.Model): 
     STATUS = (
+        ('EM EDICAO', 'Em edição'),
         ('EM ANALISE', 'Em análise'),
-        ('APROVADO', 'Aprovado' ),
         ('EM CORRECAO', 'Em correção' ),        
+        ('APROVADO', 'Aprovado' ),
         ('RETIRADO PELO RESPONSAVEL', 'Retirado pelo responsável'),
         ('RETIRADO PELO COORDENADOR', 'Retirado pelo coordenador' ),
         ('REPROVADO', 'Reprovado' ),        
@@ -37,8 +38,8 @@ class Submissao(models.Model):
     palavras_chave =  models.CharField('Palavras-chave *', max_length=100, help_text='Escreva as palavras-chave separadas por ponto-e-vígura. Exemplo: Redes Neurais; Aprendizado de Máquina; Descoberta de Conhecimento')
     arquivo_sem_autores = models.FileField('Arquivo PDF de para avaliação (sem autores e identificação)', upload_to='midias', help_text='Utilize arquivo .PDF')
     arquivo_final = models.FileField('Arquivo PDF corrigido para a versão final',null=True, blank=True, upload_to='midias', help_text='Utilize arquivo .PDF')
-    arquivo_comite_etica = models.FileField('Arquivo ZIPADO com documentação necessário de pesquisa em Humanos e Animais',null=True, blank=True, upload_to='midias', help_text='Utilize arquivo compactado .ZIP')
-    status = models.CharField('Status da submissão', max_length=25, choices=STATUS, default='EM ANALISE')
+    arquivo_comite_etica = models.FileField('Arquivo ZIPADO com documentação necessária de pesquisa em Humanos e Animais',null=True, blank=True, upload_to='midias', help_text='Utilize arquivo compactado .ZIP')
+    status = models.CharField('Status da submissão', max_length=25, choices=STATUS, default='EM EDICAO')
     observacoes = models.TextField('Registre justificativas e/ou apontamentos para o responsável da submissão', max_length=500,null=True,blank=True)
     is_active = models.BooleanField('Ativo', default=True, help_text='Se ativo, o Submissao está liberado para chamada de artigos')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)

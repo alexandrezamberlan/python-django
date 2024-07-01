@@ -15,7 +15,20 @@ class SubmissaoForm(forms.ModelForm):
         fields = ['responsavel', 'evento', 'titulo', 'resumo', 'abstract', 'palavras_chave', 'arquivo_sem_autores', 'arquivo_final', 'arquivo_comite_etica', 'status','observacoes', 'is_active']
 
 
-class BuscaSubmissaoForm(forms.Form):        
+class BuscaSubmissaoForm(forms.Form):     
+    STATUS = (
+        (None, '-----------'),
+        ('EM EDICAO', 'Em edição'),
+        ('EM ANALISE', 'Em análise'),
+        ('EM CORRECAO', 'Em correção' ),        
+        ('APROVADO', 'Aprovado' ),
+        ('RETIRADO PELO RESPONSAVEL', 'Retirado pelo responsável'),
+        ('RETIRADO PELO COORDENADOR', 'Retirado pelo coordenador' ),
+        ('REPROVADO', 'Reprovado' ),  
+    )         
+    
+    situacao = forms.ChoiceField(label='Status da submissão', choices=STATUS, required=False)
     pesquisa = forms.CharField(label='Pesquisa livre', required=False)
+    
     
     
