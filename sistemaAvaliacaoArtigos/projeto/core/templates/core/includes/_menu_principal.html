@@ -54,14 +54,20 @@
         </li>
 
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'list' %} Coordenação evento <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Pareceres, Requerimentos e Termos</a></li>            
+          </ul>
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'wrench' %} Suporte <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="mailto:lapinf@ufn.edu.br" target="_blank">lapinf@ufn.edu.br</a></li>
           </ul>
         </li> 
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'about' %}">{% bootstrap_icon 'question-sign' %} Sobre</a></li>
         
         <li class="dropdown">

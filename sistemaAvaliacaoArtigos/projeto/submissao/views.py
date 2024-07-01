@@ -49,7 +49,7 @@ class SubmissaoListView(LoginRequiredMixin, ListView):
                 qs = qs.filter(status=situacao)        
                 
             if pesquisa:
-                qs = qs.filter(Q(titulo__icontains=pesquisa) | Q(resumo__icontains=pesquisa) | Q(responsavel__nome__icontains=pesquisa))
+                qs = qs.filter(Q(evento__coordenador__nome__icontains=pesquisa) | Q(evento__nome__icontains=pesquisa) | Q(titulo__icontains=pesquisa) | Q(resumo__icontains=pesquisa) | Q(responsavel__nome__icontains=pesquisa))
                 
             
         return qs

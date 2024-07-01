@@ -35,11 +35,13 @@
 			<thead>
 				<th>Evento</th>
 				<th>Responsável</th>
+				<th>Situação</th>
 				<th>Título</th>
-				<th>Arquivo avaliação</th>
-				<th>Arquivo final</th>
-				<th>Arquivo comitê étia</th>				
+				<th class="text-center">Arquivo avaliação</th>
+				<th class="text-center">Arquivo final</th>
+				<th class="text-center">Arquivo comitê ética</th>				
 				<th class="text-center">Ativo</th>
+				<th class="text-center">Gerar Avaliação</th>
 				<th class="text-center">Editar</th>
 				<th class="text-center">Excluir</th>
 			</thead>
@@ -47,17 +49,21 @@
 				{% for submissao in object_list %}
 					<tr>
 						<td>
-							{{ submissao.evento }}
+							{{ submissao.evento.nome }}<br>
+							<small>Coord.: {{ submissao.evento.coordenador }}</small>
 						</td>
 						<td>
 							{{ submissao.responsavel }}<br>
-							<small>Data submissão: {{ submissao.data_hora_submissao }}</small>
+							<small>Data submissão: {{ submissao.data_hora_submissao|date:"d/m/Y - H:i" }}</small>
 						</td>	
 						<td>
-							{{ submissao.titulo }}<br>
-							<small>Data alteração: {{ submissao.data_hora_alteracao_submissao }}</small>
+							{{ submissao.get_status_display.upper }}
 						</td>
-						<td>							
+						<td>
+							{{ submissao.titulo }}<br>
+							<small>Data alteração: {{ submissao.data_hora_alteracao_submissao|date:"d/m/Y - H:i" }}</small>
+						</td>
+						<td class="text-center">							
 							{% if submissao.arquivo_sem_autores %} 							
 								<a href="{{ submissao.arquivo_sem_autores.url }}" target="_blank" class="btn btn-sm btn-success">
 									{% bootstrap_icon 'download' %}
@@ -68,7 +74,7 @@
 								</a>
 							{% endif %}
 						</td>
-						<td>							
+						<td class="text-center">							
 							{% if submissao.arquivo_final %} 							
 								<a href="{{ submissao.arquivo_final.url }}" target="_blank" class="btn btn-sm btn-success">
 									{% bootstrap_icon 'download' %}
@@ -79,7 +85,7 @@
 								</a>
 							{% endif %}
 						</td>
-						<td>							
+						<td class="text-center">							
 							{% if submissao.arquivo_comite_etica %} 							
 								<a href="{{ submissao.arquivo_comite_etica.url }}" target="_blank" class="btn btn-sm btn-success">
 									{% bootstrap_icon 'download' %}
@@ -98,6 +104,9 @@
 							{% endif %}
 						</td>
 						<td class="text-center">
+							{% bootstrap_button content='' href=submissao.get_absolute_url button_type='link' icon='record' button_class='btn btn-info' size='sm' %}
+						</td>
+						<td class="text-center">
 							{% bootstrap_button content='' href=submissao.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 						</td>
 						<td class="text-center">
@@ -107,7 +116,7 @@
 				{% endfor %}
 			</tbody>
 			<tfoot>
-				<th colspan="7">
+				<th colspan="11">
 					Total de registros: {{ object_list|length }}
 				</th>
 			</tfoot>
